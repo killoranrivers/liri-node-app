@@ -1,0 +1,30 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "An app that searches music and movie databases and returns requested information",
+  "main": "liri.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ToxicNerd13/liri-node-app.git"
+  },
+  "keywords": [
+    "music", 
+    "movies", 
+    "bands"
+  ],
+  "author": "SDK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ToxicNerd13/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/ToxicNerd13/liri-node-app#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.2.0",
+    "moment": "^2.24.0",
+    "node-spotify-api": "^1.1.1"
+  }
+}
