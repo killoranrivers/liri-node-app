@@ -1,21 +1,47 @@
 require("dotenv").config();
 let moment = require("moment");
 let axios = require("axios");
-
 let keys = require("./keys.js");
-// let spotify = new Spotify(keys.spotify);
+let Spotify = require("node-spotify-api");
+let spotify = new Spotify(keys.spotify);
+let fs = require("fs");
 let argv = process.argv;
 let omdbKey = "91ef9e7d";
 let searchTerm = "";
+let command = argv[2];
 
 // Scan added arguments in process.argv to grab user input
-for (let i = 2; i < argv.length; i++) {
-    if (i > 2 && i < argv.length) {
+for (let i = 3; i < argv.length; i++) {
+    if (i > 3 && i < argv.length) {
         searchTerm = `${searchTerm}+${argv[i]}`;
     }
     else {
         searchTerm += argv[i];
     };
+};
+
+// Function that uses Node Spotify package to look up song info
+function spotifyThis(searchTerm) {
+    if (!searchTerm) {
+        searchTerm = "The Sign Ace of Base";
+        console.log("Since you couldn't pick a song, I went ahead and chose this little earworm...");
+    }
+    spotify.search({type: "track",  query: searchTerm, limit: 1})
+    .then(function(response) {
+        //console.log(JSON.stringify(response, null, 2)); 
+        console.log(`Artist: ${response.tracks.items[0].artists[0].name}`);
+        console.log(`Song Title: ${response.tracks.items[0].name}`);
+        if (response.tracks.items[0].preview_url === undefined || response.tracks.items[0].preview_url === null) {
+            console.log("Preview: None available");
+        }
+        else { 
+        console.log(`Preview: ${response.tracks.items[0].preview_url}`);
+        };
+        console.log(`Album: ${response.tracks.items[0].album.name}`);
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
 };
 
 // Function that uses Axios to search BandsInTown
@@ -38,8 +64,6 @@ function concertThis(searchTerm) {
             console.log(error);
         });
 };
-
-concertThis(searchTerm);
 
 // Function that uses Axios to search OMDB
 function movieThis(searchTerm) {
@@ -64,3 +88,18 @@ It's on Netflix!`);
             console.log(error);
         });
 };
+
+// Switch statement that runs a specific function based on which command is entered
+switch (command) {
+    case "concert-this":
+        concertThis(searchTerm);
+        break;
+    case "spotify-this-song":
+        spotifyThis(searchTerm);
+        break;
+    case "movie-this":
+        movieThis(searchTerm);
+        break;
+    case "do-what-it-says":
+            
+}
