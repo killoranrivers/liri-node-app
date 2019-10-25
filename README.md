@@ -15,24 +15,24 @@
 ### Screenshots of LIRI in action...
 
 #### spotify-this with no additional user input:
-! [] (./images/spotify-no-input.png)
+![](./images/spotify-no-input.png)
 
 #### spotify-this with user input:
-! [] (./images/spotify-song.png)
+![](./images/spotify-song.png)
 
 #### concert-this with user input: 
-! [] (./images/concert-this.png)
+![](./images/concert-this.png)
 
 #### movie-this with no user input: 
-! [] (./images/movie-no-input.png)
+![](./images/movie-no-input.png)
 
 #### movie-this with user input:
-! [] (./images/movie-this.png)
+![](./images/movie-this.png)
 
 #### do-what-it-says:
-! [] (./images/random-command.png)
+![](./images/random-command.png)
 
 #### If the user enters an invalid command:
-! [] (./images/invalid-command.png)
+![](./images/invalid-command.png)
 
 
